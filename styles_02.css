@@ -1,0 +1,25 @@
+/* Styles for the advice container */
+#advice-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc; /* Example border */
+  border-radius: 5px;
+  font-family: "Hanken Grotesk", sans-serif; /* Example font */
+}
+
+#advice-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#advice-container h3 {
+  margin-top: 15px;
+}
+
+#advice-container p,
+#advice-container ul {
+  margin-bottom: 10px;
+}
+
+/* Add more styles as needed */

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chakra Visualization</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: rgba((254, 251, 238));
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #chakra-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        mix-blend-mode: screen; /* Blending effect for overlapping blobs */
+      }
+
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px); /* Increase blur for smooth transitions */
+        opacity: 3;
+        animation: float 5s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(30px, -20px);
+        }
+        50% {
+          transform: translate(-20px, 30px);
+        }
+        75% {
+          transform: translate(-30px, -10px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chakra-container"></div>
+
+    <script>
+      // Chakra test results (percentages)
+      const chakraResults = {
+        root: 0,
+        sacral: 20,
+        solarPlexus: 0,
+        heart: 0,
+        throat: 0,
+        thirdEye: 80,
+        crown: 0,
+      };
+
+      // Chakra colors
+      const chakraColors = {
+        root: "#FD1D3B", // Red
+        sacral: "#FF5733", // Orange
+        solarPlexus: "#FDD81D", // Yellow
+        heart: "#02EF73", // Green
+        throat: "#0395FD", // Blue
+        thirdEye: "#3F00FF", // Indigo
+        crown: "#8800FF", // Violet
+      };
+
+      const container = document.getElementById("chakra-container");
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      // Generate blobs proportional to chakra test results
+      function generateBlobs() {
+        container.innerHTML = ""; // Clear previous blobs
+
+        Object.entries(chakraResults)
+          .filter(([_, percentage]) => percentage > 0)
+          .forEach(([chakra, percentage]) => {
+            const blob = document.createElement("div");
+            blob.className = "blob";
+
+            // Calculate size based on percentage
+            const size =
+              Math.min(viewportWidth, viewportHeight) *
+              (percentage / 100) *
+              1.5;
+
+            blob.style.width = `${size}px`;
+            blob.style.height = `${size}px`;
+
+            // Apply gradient color
+            blob.style.background = `radial-gradient(circle, 
+                        ${chakraColors[chakra]} 0%, 
+                        ${chakraColors[chakra]}80 50%, 
+                        ${chakraColors[chakra]}40 70%, 
+                        transparent 100%)`;
+
+            // Position blobs randomly but ensure they fill the screen
+            blob.style.left = `${Math.random() * (viewportWidth - size)}px`;
+            blob.style.top = `${Math.random() * (viewportHeight - size)}px`;
+
+            // Apply unique animation delay for each blob
+            blob.style.animationDelay = `${Math.random() * -10}s`;
+
+            container.appendChild(blob);
+          });
+      }
+
+      // Handle screen resize
+      window.addEventListener("resize", () => {
+        generateBlobs(); // Regenerate blobs dynamically
+      });
+
+      generateBlobs();
+    </script>
+  </body>
+</html>
