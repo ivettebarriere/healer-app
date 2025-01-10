@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chakra Advice</title>
+    <style>
+        :root {
+            --chakra-primary: #E31E24;
+            --chakra-secondary: #FFE6E6;
+            --chakra-accent: #FF9999;
+            --text-color: #333;
+            --background-light: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: var(--chakra-secondary);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        .chakra-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        #chakra-title {
+            text-align: center;
+            color: var(--chakra-primary);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #advice-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section {
+            background: var(--background-light);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        section h2 {
+            color: var(--chakra-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--chakra-accent);
+        }
+
+        section ul {
+            list-style: none;
+        }
+
+        section ul li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        section ul li::before {
+            content: "•";
+            color: var(--chakra-primary);
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        #color-therapy-button {
+            display: block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: var(--chakra-primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #color-therapy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: var(--chakra-accent);
+        }
+
+        @media (max-width: 768px) {
+            .chakra-container {
+                padding: 1rem;
+            }
+
+            #chakra-title {
+                font-size: 2rem;
+            }
+
+            #advice-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="advice-container" class="chakra-container">
+        <h1 id="chakra-title">Root Chakra Advice</h1>
+        <div id="advice-content">
+            <section id="things-to-do">
+                <h2>Things to Do</h2>
+                <ul>
+                    <li>Practice grounding meditation</li>
+                    <li>Walk barefoot in nature</li>
+                    <li>Dance to rhythmic music</li>
+                    <li>Practice martial arts</li>
+                </ul>
+            </section>
+            
+            <section id="things-to-eat">
+                <h2>Nurturing Foods</h2>
+                <ul>
+                    <li>Root vegetables (carrots, potatoes)</li>
+                    <li>Red fruits (apples, pomegranates)</li>
+                    <li>Protein-rich foods</li>
+                    <li>Grounding spices (black pepper, ginger)</li>
+                </ul>
+            </section>
+            
+            <section id="yoga-poses">
+                <h2>Yoga Poses</h2>
+                <ul>
+                    <li>Mountain Pose (Tadasana)</li>
+                    <li>Child's Pose (Balasana)</li>
+                    <li>Tree Pose (Vrksasana)</li>
+                    <li>Warrior I (Virabhadrasana I)</li>
+                </ul>
+            </section>
+            
+            <section id="products">
+                <h2>Healing Products</h2>
+                <ul>
+                    <li>Red jasper crystal</li>
+                    <li>Grounding essential oils</li>
+                    <li>Red candles</li>
+                    <li>Meditation cushion</li>
+                </ul>
+            </section>
+        </div>
+        <button id="color-therapy-button">Generate Color Therapy</button>
+    </div>
+    <script src="advice_page_script.js"></script>
+</body>
+</html>
